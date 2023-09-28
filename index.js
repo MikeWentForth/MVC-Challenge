@@ -36,6 +36,7 @@ sequelize.sync({ force: false }).then(() => {
 
 
 
+
 // PACKAGES INSTALLED
 // mysql2 -- INSTALLED
 // express -- INSTALLED
@@ -53,22 +54,22 @@ sequelize.sync({ force: false }).then(() => {
 // WHEN I visit the site for the first time
 // THEN I am presented with the homepage, which includes 
 //      existing blog posts if any have been posted;  XXXXXXXXXXXXX
-//      navigation links for the homepage and the dashboard; 
-//      and the option to log in
+//      navigation links for the homepage and the dashboard; -- DONE
+//      and the option to log in -- DONE
 
 // WHEN I click on the homepage option
-// THEN I am taken to the homepage
+// THEN I am taken to the homepage --DONE
 
 // WHEN I click on any other links in the navigation
-// THEN I am prompted to either sign up or sign in
+// THEN I am prompted to either sign up or sign in --DONEXXXXXXXX
 
 // WHEN I choose to sign up
-// THEN I am prompted to create a username and password
+// THEN I am prompted to create a username and password -- DONE
 
 // WHEN I click on the sign-up button
-// THEN my user credentials are saved and I am logged into the site
+// THEN my user credentials are saved and I am logged into the site XXXXXXXXX
 
-// WHEN I revisit the site at a later time and choose to sign in
+// WHEN I revisit the site at a later time and choose to sign in XXXXXXXXXX
 // THEN I am prompted to enter my username and password
 
 // WHEN I am signed in to the site
