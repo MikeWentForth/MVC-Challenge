@@ -1,20 +1,23 @@
 <h2>Sign Up</h2>
 
-
-<form>
+<form action="signup" method="post">
   <div class="mb-3">
-    <label for="exampleInput" class="form-label">Name</label>
-    <input type="input" class="form-control input-width shadow" id="exampleInput" aria-describedby="emailHelp">
-    <div id="emailHelp" class="form-text"></div>
+    <label for="nameInput" class="form-label">Name</label>
+    <input type="input" class="form-control input-width shadow" name="nameInput" id="nameInput" aria-describedby="nameHelp">
+    <div id="nameHelp" class="form-text"></div>
   </div>
    <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Email address</label>
-    <input type="email" class="form-control input-width shadow" id="exampleInputEmail1" aria-describedby="emailHelp">
+    <label for="emailInput" class="form-label">Email address</label>
+    <input type="email" class="form-control input-width shadow" name="emailInput" id="emailInput" aria-describedby="emailHelp">
     <div id="emailHelp" class="form-text"></div>
   </div>
   <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">Password</label>
-    <input type="password" class="form-control input-width shadow" id="exampleInputPassword1">
+    <label for="password1Input" class="form-label">Password</label>
+    <input type="password" class="form-control input-width shadow" id="password1Input" name="password1Input">
+  </div>
+  <div class="mb-3">
+    <label for="password2Input" class="form-label">Confirm Password</label>
+    <input type="password" class="form-control input-width shadow" name="password2Input" id="password2Input">
   </div>
 
    <button type="submit" class="btn btn-primary shadow">Submit</button>

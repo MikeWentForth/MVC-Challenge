@@ -1,0 +1,69 @@
+.input-width {
+
+  max-width: 25em;
+  
+}
+
+nav {
+
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#customContent {
+
+  height:100%;
+  padding: 10px;
+ 
+}
+
+#banner {
+  display: block;
+  margin-left:auto;
+  margin-right:auto;
+  max-width:40%;
+}
+
+body {
+  padding-right: 10px;
+  padding-left: 10px;
+  background-color: rgb(120, 242, 195)
+}
+
+.flex-container {
+  display: flex;
+  flex-flow: column;
+  height: 100vh;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* Layout on index.handlebars page */
+
+#signUp {
+  right: 5em;
+}
+
+#left-buffer {
+  width:5%;
+}
+
+#right-buffer {
+
+  width: 8%;
+}
+#sort-button-div {
+  width: 8%;
+}
+#main-div {
+  width:77%;
+}
