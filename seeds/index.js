@@ -1,4 +1,5 @@
 const seedBlogPosts = require('./blogpost-seeds');
+const seedUsers = require('./users-seeds');
 // const seedCategories = require('./category-seeds');
 // const seedProducts = require('./product-seeds');
 // const seedTags = require('./tag-seeds');
@@ -14,9 +15,12 @@ const seedAll = async () => {
   await sequelize.sync({ force: true });
   await sequelize.query("SET FOREIGN_KEY_CHECKS = 1"); // ADDED
   console.log('\n----- DATABASE SYNCED -----\n');
+  await seedUsers();
+  console.log('\n----- USERS SEEDED -----\n');
   await seedBlogPosts();
   console.log('\n----- BLOGPOSTS SEEDED -----\n');
-  
+
+
   // await seedCategories();
   // console.log('\n----- CATEGORIES SEEDED -----\n');
 
