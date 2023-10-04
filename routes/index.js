@@ -1,6 +1,8 @@
 const router = require('express').Router();
 //const apiRoutes = require('./api');
 const User = require('../models/User');
+const BlogPost = require('../models/BlogPost');
+
 
 //router.use('/api', apiRoutes);
 
@@ -10,10 +12,26 @@ const User = require('../models/User');
 
 // Default/home/index route
 router.get('/', async (req, res) => {
-    res.render('index', {
-        layout : 'main',
-        loggedIn: req.session.loggedIn === true
-    });
+
+
+    try {
+        console.log("Fetching blogpost records");
+        let results = await BlogPost.findAll();
+
+        //res.json(results);
+        console.log(results);
+        console.log(results[0].dataValues.title);
+        res.render('index', {
+            layout : 'main',
+            posts: results,
+            loggedIn: req.session.loggedIn === true
+        });
+
+    } catch (err) {
+        res.status(500).json(err)
+    }
+
+
 });
 
 router.get('/login', async (req,res) => {

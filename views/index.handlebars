@@ -1,8 +1,10 @@
-<h2>Liste of my most loved League champions</h2>
-<ul>
-  <li class="midlaner">Leblanc</li>
-  <li class="midlaner">Lux</li>
-  <li class="toplaner">Teemo</li>
-  <li class="midlaner">Kassadin</li>
-  <li class="toplaner">Jarvan IV</li>
-</ul>
+
+<h2>Recent Blog Posts</h2>
+
+{{#each posts}}
+  <div class="blogpost">
+  <h2>{{dataValues.title}}</h2>
+  <p>{{dataValues.content}}</p>
+  <p>{{dataValues.comment_date}}</p>
+  </div>
+{{/each}}

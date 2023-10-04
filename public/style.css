@@ -38,7 +38,11 @@ body {
 }
 
 
-
+.blogpost {
+  margin: 1em;
+  border: 3px solid whitesmoke;
+  padding: 1em;
+}
 
 
 
