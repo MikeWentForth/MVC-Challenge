@@ -44,6 +44,7 @@ User.init(
         updatedUserData.password = await bcrypt.hash(updatedUserData.password, 10);
         return updatedUserData;
       }
+      // May need before lookup XXXXXXXX
     },
     sequelize,
     timestamps: true,

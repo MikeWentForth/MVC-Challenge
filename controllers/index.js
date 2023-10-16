@@ -2,6 +2,7 @@ const router = require('express').Router();
 //const apiRoutes = require('./api');
 const User = require('../models/User');
 const BlogPost = require('../models/BlogPost');
+const bcrypt = require('bcrypt');
 
 
 //router.use('/api', apiRoutes);
@@ -34,6 +35,7 @@ router.get('/', async (req, res) => {
 
 });
 
+// SIGNIN / LOGIN
 router.get('/login', async (req,res) => {
     res.render('login', {
         layout : 'main',
@@ -41,6 +43,43 @@ router.get('/login', async (req,res) => {
     });
 });
 
+router.post('/login', async (req,res) => {
+
+    console.log("LOGIN FORM RECEIVED");
+
+    // Validate the incoming data: email address and password
+    // If not valid, then bounce back the login form with a notice message....
+    let email = req.body.email.trim();
+    let pw = req.body.password.trim();
+
+    // If valid, then do a database lookup for a matching user record.
+    // Would do this for a real, public system.
+
+    // If a matching user record is found, then complete the login
+    // ... set session variables and redirect to the user dashboard or homepage
+    const results = await User.findOne({ where: { email: email} });
+    console.log(results);
+    if (results === null) {
+      res.json("User Not found");
+    } else {
+        // Compare the password  XXXXXXXXXXXXXXXXXX compare isn't working.
+        if (bcrypt.compare(results.password,pw)) {
+            console.log("LOGIN IS GOOD.");
+            // Set session
+            // Redirect
+        } else {
+            console.log("LOGIN IS BAD -- NO PASSWORD MATCH.");
+
+        }
+      res.json(results);
+    }
+
+    // If no matching record is found, then bounce back to the login page with a notice message.
+
+});
+
+
+// SIGNUP
 router.get('/signup', async (req,res) => {
     res.render('signup', {
         layout : 'main',

@@ -15,12 +15,11 @@ app.use(session({
   cookie: { maxAge: 60000 }
 }));
 
-// Add routes support
-const routes = require('./routes');
+// Add routes support (controller)
+const routes = require('./controllers');
 app.use(routes);
 
 // Integrate handlebars...
-// XXXXXXXXXXX NEED TO GET HANDLEBARS INTEGRATED
 const exphbs = require('express-handlebars');
 const hbs = exphbs.create({});
 app.engine('handlebars', hbs.engine);
