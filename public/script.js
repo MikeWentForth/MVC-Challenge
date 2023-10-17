@@ -7,10 +7,26 @@ function loggedIn() {
 
 const myModal = new bootstrap.Modal(document.getElementById('signup-login'));
 
+try {
 // Add click event listener to main login button
 document.getElementById("login").addEventListener("click", function() {
     if (!loggedIn()) myModal.show();
 });
+} catch (err) {
+  console.log("No login button on page.")
+}
+
+// Add click event listener to main logout button
+try {
+  document.getElementById("logout").addEventListener("click", function() {
+    location.href="/logout";
+  });
+}
+catch (err) {
+  console.log("No logout button on page.")
+}
+
+
 
 // Add click event to modal login button
 

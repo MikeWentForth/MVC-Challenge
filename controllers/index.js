@@ -14,7 +14,6 @@ const bcrypt = require('bcrypt');
 // Default/home/index route
 router.get('/', async (req, res) => {
 
-
     try {
         console.log("Fetching blogpost records");
         let results = await BlogPost.findAll();
@@ -59,23 +58,52 @@ router.post('/login', async (req,res) => {
     // ... set session variables and redirect to the user dashboard or homepage
     const results = await User.findOne({ where: { email: email} });
     console.log(results);
+    console.log(req.body);
     if (results === null) {
-      res.json("User Not found");
+      res.send("NO MATCHING EMAIL FOUND.");
     } else {
         // Compare the password  XXXXXXXXXXXXXXXXXX compare isn't working.
-        if (bcrypt.compare(results.password,pw)) {
+        const isValid = await bcrypt.compare(pw, results.password);
+        if (isValid) {
             console.log("LOGIN IS GOOD.");
             // Set session
-            // Redirect
+            req.session.loggedIn = true;
+            res.redirect("/");
+            /*try {
+                console.log("Fetching blogpost records");
+                let results = await BlogPost.findAll();
+        
+                //res.json(results);
+                console.log(results);
+                console.log(results[0].dataValues.title);
+                res.render('index', {
+                    layout : 'main',
+                    posts: results,
+                    loggedIn: req.session.loggedIn === true
+                });
+        
+            } catch (err) {
+                res.status(500).json(err)
+            }
+            */
+
+
         } else {
             console.log("LOGIN IS BAD -- NO PASSWORD MATCH.");
+            res.send("PASSWORD OR USERNAME DID NOT MATCH.")
 
         }
-      res.json(results);
+
     }
 
-    // If no matching record is found, then bounce back to the login page with a notice message.
 
+});
+
+
+// LOGOUT
+router.get('/logout', async (req,res) => {
+    req.session.loggedIn = false;
+    res.redirect("/");
 });
 
 
@@ -118,6 +146,7 @@ router.post("/signup", async (req,res) => {
     res.redirect("/");
 
 });
+
 
 
 module.exports = router;
