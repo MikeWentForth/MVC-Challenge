@@ -133,17 +133,24 @@ router.post("/signup", async (req,res) => {
     // XXXXXXXX
 
     // Create a user record
-    await User.create({
-        name: userName,
-        email: email,
-        password: pw1
-    });
+    try {
 
-    // Register logged in with the session
-    req.session.loggedIn = true;
- 
-    // Redirect to homepage?
-    res.redirect("/");
+        let results = await User.create({
+            name: userName,
+            email: email,
+            password: pw1
+        });
+        // Register logged in with the session
+        req.session.loggedIn = true;
+
+        // Redirect to homepage?
+        res.redirect("/");
+
+    } catch (err) {
+        console.log("Error while creating user.");
+        res.send("Unable to create new user record.");
+
+    }
 
 });
 
